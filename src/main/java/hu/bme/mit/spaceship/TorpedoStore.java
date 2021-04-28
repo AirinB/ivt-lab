@@ -2,6 +2,8 @@ package hu.bme.mit.spaceship;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
 * Class storing and managing the torpedoes of a ship
@@ -15,13 +17,14 @@ public class TorpedoStore {
 
   private int torpedoCount = 0;
   private Random rand;
+  private static final Logger LOGGER = Logger.getLogger(TorpedoStore.class.getName());
 
   public TorpedoStore(int numberOfTorpedos){
 
     try {
         rand = SecureRandom.getInstanceStrong();
       } catch (NoSuchAlgorithmException e) {
-        e.printStackTrace();
+      LOGGER.log(Level.SEVERE, "This is a severe error!");
     }
 
     this.torpedoCount = numberOfTorpedos;
